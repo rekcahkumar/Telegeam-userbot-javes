@@ -17,10 +17,11 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
-    "`Hello! This is an automated message.\n\n`"
-    "`I haven't approved you to PM yet.`"
-    "`Please wait for me to look in, I mostly approve PMs.\n\n`"
-    "`Until then, please don't spam my PM, you'll get blocked and reported!`")
+    
+    "`Hello...\n`"
+    
+    "`please ask your pubg related questions to groot not my master !\n`"
+    "`If not let him see your message please be patient , thankyou`"  )
 # =================================================================
 
 
@@ -70,7 +71,8 @@ async def permitpm(event):
                 if COUNT_PM[event.chat_id] > 4:
                     await event.respond(
                         "`You were spamming my PM, which I didn't like.`\n"
-                        "`You have been BLOCKED and reported as SPAM, until further notice.`"
+                        "`I Wouldn't let you to chat me again until further notice`\n"
+                        "`Bye`"
                     )
 
                     try:
@@ -134,7 +136,7 @@ async def auto_accept(event):
                     )
 
 
-@register(outgoing=True, pattern="^\.notifoff$")
+@register(outgoing=True, pattern="^.notifoff$")
 async def notifoff(noff_event):
     """ For .notifoff command, stop getting notifications from unapproved PMs. """
     try:
@@ -146,7 +148,7 @@ async def notifoff(noff_event):
     await noff_event.edit("`Notifications from unapproved PM's are silenced!`")
 
 
-@register(outgoing=True, pattern="^\.notifon$")
+@register(outgoing=True, pattern="^.notifon$")
 async def notifon(non_event):
     """ For .notifoff command, get notifications from unapproved PMs. """
     try:
@@ -158,7 +160,7 @@ async def notifon(non_event):
     await non_event.edit("`Notifications from unapproved PM's unmuted!`")
 
 
-@register(outgoing=True, pattern="^\.approve$")
+@register(outgoing=True, pattern="^.approve$")
 async def approvepm(apprvpm):
     """ For .approve command, give someone the permissions to PM you. """
     try:
@@ -199,7 +201,7 @@ async def approvepm(apprvpm):
         )
 
 
-@register(outgoing=True, pattern="^\.disapprove$")
+@register(outgoing=True, pattern="^.disapprove$")
 async def disapprovepm(disapprvpm):
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
@@ -229,7 +231,7 @@ async def disapprovepm(disapprvpm):
         )
 
 
-@register(outgoing=True, pattern="^\.block$")
+@register(outgoing=True, pattern="^.block$")
 async def blockpm(block):
     """ For .block command, block people from PMing you! """
     if block.reply_to_msg_id:
@@ -243,7 +245,7 @@ async def blockpm(block):
     else:
         await block.client(BlockRequest(block.chat_id))
         aname = await block.client.get_entity(block.chat_id)
-        await block.edit("`You've been blocked!`")
+        await block.edit("`You've been blocked! \n bye....`")
         name0 = str(aname.first_name)
         uid = block.chat_id
 
@@ -260,7 +262,7 @@ async def blockpm(block):
         )
 
 
-@register(outgoing=True, pattern="^\.unblock$")
+@register(outgoing=True, pattern="^.unblock$")
 async def unblockpm(unblock):
     """ For .unblock command, let people PMing you again! """
     if unblock.reply_to_msg_id:
