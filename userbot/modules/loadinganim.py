@@ -4,7 +4,7 @@ import asyncio
 from collections import deque
 from userbot.events import register
 
-@register(outgoing=True, pattern="^.loading")
+@register(outgoing=True, disable_errors=True, pattern="^.load")
 async def _(event):
 	if event.fwd_from:
 		return 
