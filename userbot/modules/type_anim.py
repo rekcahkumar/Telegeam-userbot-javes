@@ -23,7 +23,3 @@ async def _(event):
         await event.edit(previous_text)
         await asyncio.sleep(DELAY_BETWEEN_EDITS)
 
-CMD_HELP.update({
-    "type_anim":
-    ".type <text> for animation "
-})
