@@ -8,7 +8,7 @@ from userbot.events import register
 async def _(event):
 	if event.fwd_from:
 		return 
-	deq = deque(list("Loaging....."))
+	deq = deque(list("Loading....."))
 	for _ in range(1000):
 		await asyncio.sleep(0.1)
 		await event.edit("".join(deq))
