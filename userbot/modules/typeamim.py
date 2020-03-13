@@ -4,7 +4,7 @@ from telethon import events
 import asyncio
 from userbot.events import register
 
-@register(outgoing=True, pattern="^.type")
+@register(outgoing=True, disable_errors=True, pattern="^.type")
 async def _(event):
     if event.fwd_from:
         return
