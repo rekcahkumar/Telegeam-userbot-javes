@@ -18,10 +18,10 @@ from userbot.events import register
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
     
-    "`Hello...\n`"
+    "`Hello Sir...\n`"
     
-    "`please ask your pubg related questions to groot not my master !\n`"
-    "`If not let him see your message please be patient , thankyou`"  )
+   
+    "`I cant allow you to talk my owner wihout his permission please be patint  , thankyou`"  )
 # =================================================================
 
 
@@ -71,8 +71,8 @@ async def permitpm(event):
                 if COUNT_PM[event.chat_id] > 4:
                     await event.respond(
                         "`You were spamming my PM, which I didn't like.`\n"
-                        "`I Wouldn't let you to chat me again until further notice`\n"
-                        "`Bye`"
+                        "`I Wouldn't let you to chat my master  again until further notice`\n"
+                        "`Good Bye`"
                     )
 
                     try:
@@ -160,7 +160,7 @@ async def notifon(non_event):
     await non_event.edit("`Notifications from unapproved PM's unmuted!`")
 
 
-@register(outgoing=True, pattern="^.approve$")
+@register(outgoing=True, pattern="^.allow$")
 async def approvepm(apprvpm):
     """ For .approve command, give someone the permissions to PM you. """
     try:
@@ -184,10 +184,10 @@ async def approvepm(apprvpm):
     try:
         approve(uid)
     except IntegrityError:
-        await apprvpm.edit("`User may already be approved.`")
+        await apprvpm.edit("`my master allowed you to pm now you can speak , Thankyou.`")
         return
 
-    await apprvpm.edit(f"[{name0}](tg://user?id={uid}) `approved to PM!`")
+    await apprvpm.edit(f"[{name0}](tg://user?id={uid}) `You don't have permission to PM from now Dont spam ,Thankyou`")
 
     async for message in apprvpm.client.iter_messages(apprvpm.chat_id,
                                                       from_user='me',
@@ -201,7 +201,7 @@ async def approvepm(apprvpm):
         )
 
 
-@register(outgoing=True, pattern="^.disapprove$")
+@register(outgoing=True, pattern="^.disallow$")
 async def disapprovepm(disapprvpm):
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
