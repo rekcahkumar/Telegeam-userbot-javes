@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.events import register
 
-@register(outgoing=True, disable_errors=True, pattern="^.scan")
+@register(outgoing=True, pattern="^.scan")
 async def _(event):
     if event.fwd_from:
         return 
