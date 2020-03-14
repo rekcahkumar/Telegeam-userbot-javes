@@ -1,7 +1,7 @@
 {
-  "name": "Javes",
-  "description": "[Paperplane Extended] A modular Telegram userbot running on Python 3.6+ with an sqlalchemy database.",
-  "logo": "https://i.imgur.com/ATSG4w3.png",
+  "name": "Telegram Javes",
+  "description": "[Javes] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database.",
+  "logo": "https://i.ibb.co/KhLWz5P/photo-2020-02-28-22-03-27.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,48 +9,49 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/AvinashReddy3108/PaperplaneExtended",
-  "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-07-24",
-  "success_url": "https://t.me/PaperplaneExtended",
+  "repository": "https://github.com/keselekpermen69/userbutt",
+  "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
+  "success_url": "https://t.me/userbotindo",
+  "stack": "container",
   "env": {
     "API_KEY": {
       "description": "Get this value from my.telegram.org.",
-"value": "990208",
       "required": true
     },
     "API_HASH": {
       "description": "Get this value from my.telegram.org.",
-      "value": "2407a101fb50a8df2f9241eedfed54e7",
-"required": true
+      "required": true
     },
     "STRING_SESSION": {
       "description": "Get this value by running [python3 string_session.py] in Termux or local system.",
-   "value": "1BVtsOKABu1L2DVpx_WxZqOeWudlTHlrp5PeelW_B3ipoYm98n4x97v8ENXDU7lV4gNebDSm9yizvDo68551_qZ3Kr02pPpMZCGdpGOI-w32V4IEZfBYh7pnKx7W8N6nb6dlyrNCdPOVeh8-4seBg9Vj7gp-KlwrnRWC9N484TEaLcgeNV8aAw15Q0RL1dmUsP038M1slZxzZrlSqDRQMcnvEv7fGghwyX1Q0QbujmnEONOTjB3QhC6SDA7edg-wlrWdbFmOcqhbKJbX9eOHrtISaSVeoyhPFADAW-pVzpTodFkH7j2SCdNuE9mL38gyr0Tcz_CsAy9jfeZlIlcte0oZfsBzn4AA=",
-   "required": true
+      "required": true
     },
     "HEROKU_MEMEZ": {
-      "description": "This should be True if the userbor is running on a Heroku Dyno.",
+      "description": "This should be True if the userbot is running on a Heroku Dyno.",
       "value": "True",
       "required": true
     },
-    "UPSTREAM_REPO_URL": {
-      "description": "In case you maintain a fork, add your repo URL here.",
-      "value": "https://github.com/rekcah-pavi/Userbot",
-"required": false
-    },
+    "TELEGRAPH_SHORT_NAME": {
+      "description": "Set the userbot's telegra.ph module. You must set this to make the bot alive",
+      "value": "anything",
+      "required": true
+	},  
     "HEROKU_API_KEY": {
       "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
-    "value": "14efa4e4-2dcd-41e4-834b-036441579062"
+      "value": ""
     },
     "HEROKU_APP_NAME": {
       "description": "Add the Heroku app name here. It helps with userbot updates.",
-     "value": "javes2",
- "required": false
+      "required": false
+    },
+    "UPSTREAM_REPO_URL": {
+      "description": "In case you maintain a fork, add your repo URL here.",
+      "value": "https://github.com/KeselekPermen69/UserButt",
+      "required": false
     },
     "COUNTRY": {
       "description": "Set your Country to be used in the .time and .date commands.",
-      "value": "SriLanka",
-"required": false
+      "required": false
     },
     "TZ_NUMBER": {
       "description": "Change this value in case your country has multiple Time Zones.",
@@ -59,12 +60,12 @@
     },
     "CHROME_DRIVER": {
       "description": "ChromeDriver location for selenium based modules.",
-      "value": "/app/.chromedriver/bin/chromedriver",
+      "value": "/usr/bin/chromedriver",
       "required": false
     },
     "GOOGLE_CHROME_BIN": {
       "description": "Google Chrome (or) Chromium binary location for selenium based modules.",
-      "value": "/app/.apt/usr/bin/google-chrome",
+      "value": "/usr/bin/chromium-browser",
       "required": false
     },
     "OPEN_WEATHER_MAP_APPID": {
@@ -77,7 +78,7 @@
     },
     "BOTLOG_CHATID": {
       "description": "ChatID of the Log group. Set it to '0' if BOTLOG = False and/or if LOGSPAMMER = False.",
-      "value": "-1001429600421"
+      "value": "0"
     },
     "CONSOLE_LOGGER_VERBOSE": {
       "description": "If you need verbosity on the console logging",
@@ -141,13 +142,12 @@
     },
     "DEFAULT_BIO": {
       "description": "Default profile bio.",
-      "value": "[PM = Report Spam] Beware of my userbot.",
+      "value": "I'm using userbot",
       "required": false
     },
     "ALIVE_NAME": {
       "description": "Name to show in .alive message",
-      "value": "True",
-"required": false
+      "required": false
     },
     "G_DRIVE_CLIENT_SECRET": {
       "description": "Enter Your Client Secret for Google Drive.",
@@ -157,10 +157,14 @@
       "description": "Enter the Google Drive authentication data, as a JSON structure.",
       "required": false
     },
+    "LYDIA_API_KEY": {
+      "description": "This Module Needs CoffeeHouse API to work. so Join https://telegram.dog/IntellivoidDev and send #activateapi and follow instructions.",
+      "required": false
+    },
     "WEATHER_DEFCITY": {
       "description": "Set the default city for the userbot's weather module.",
       "required": false
-    },
+    }, 
     "LOGSPAMMER": {
       "description": "Set this to True in case you want the error logs to be stored in the userbot log group, instead of spitting out the file in the current chat, requires a valid BOTLOG_CHATID to be set.",
       "value": "True"
@@ -170,28 +174,8 @@
     {
       "plan": "heroku-postgresql",
       "options": {
-        "version": "9.5"
+        "version": "12"
       }
-    }
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-    },
-    {
-      "url": "https://github.com/amivin/aria2-heroku"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
-    },
-    {
-      "url": "heroku/python"
     }
   ]
 }
