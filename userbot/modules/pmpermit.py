@@ -283,9 +283,9 @@ async def unblockpm(unblock):
 CMD_HELP.update({
     "pmpermit":
     "\
-.approve\
+.allow\
 \nUsage: Approves the mentioned/replied person to PM.\
-\n\n.disapprove\
+\n\n.disallow\
 \nUsage: Disapproves the mentioned/replied person to PM.\
 \n\n.block\
 \nUsage: Blocks the person.\
