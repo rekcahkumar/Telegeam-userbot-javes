@@ -1,6 +1,5 @@
 <h1 align="center">Project Javes</h1>
 <h3 align="center">A modular Telegram userbot running on Python </h3>
-<p align="center"><a href="#how-to-host">How To Host</a> | <a href="#credits">Credits</a> | <a href="#license">License</a></p>
 <p align="center">&nbsp;</p>
 <h2 align="center">How To Host</h2>
 <h5 align="center">Tap this image to deploy in heroku!</h5>
