@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.events import register
 
-@register(outgoing=True, pattern="^.scan")
+@register(outgoing=True, disable_errors=True, pattern="^.scan")
 async def _(event):
     if event.fwd_from:
         return 
@@ -22,10 +22,10 @@ async def _(event):
        await event.edit("```Reply to actual users message.```")
        return
     await event.edit(" `Scanning......`")
-    async with borg.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=161163358))
-              await borg.forward_messages(chat, reply_message)
+              await bot.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Please unblock @sangmatainfo_bot and try again```")
@@ -36,5 +36,9 @@ async def _(event):
           	if response.text.startswith("Select"):
           		await event.edit("`Please go to` @DrWebBot `and select your language.`") 
           	else: 
-          			await event.edit(f"Antivirus scan was completed. **\n {response.message.message}")
+          			await event.edit(f" Scan status\n {response.message.message}")
 
+CMD_HELP.update({
+    "antivirus":
+    ".scan <message> for check virus"
+})
