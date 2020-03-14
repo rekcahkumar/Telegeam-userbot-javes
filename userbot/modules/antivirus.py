@@ -38,7 +38,3 @@ async def _(event):
           	else: 
           			await event.edit(f" Scan status\n {response.message.message}")
 
-CMD_HELP.update({
-    "antivirus":
-    ".scan <message> for check virus"
-})
