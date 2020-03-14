@@ -16,7 +16,7 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    "Hello Sir My owner is offline just leave your message! Thankyou",
+    "Hello Sir rk is offline just leave your message! i will tell him,Thankyou",
     
 ]
 # =================================================================
