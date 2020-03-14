@@ -61,7 +61,7 @@ async def addcf(event):
         ACC_LYDIA.update({(event.chat_id & reply_msg.from_id): session})
         await event.edit("I will see this  user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
     else:
-        await event.edit("Reply to a user to activate Lydia AI on them")
+        await event.edit("Reply to a user to activate on them")
 
 @register(outgoing=True, pattern="^.remcf$")
 async def remcf(event):
@@ -75,7 +75,7 @@ async def remcf(event):
         del ACC_LYDIA[event.chat_id & reply_msg.from_id]
         await event.edit(" disabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
     except Exception:
-        await event.edit("This person does not have Lydia activated on him/her.")
+        await event.edit("This person does not have activated on him/her.")
 
 @register(incoming=True, disable_edited=True)
 async def user(event):
