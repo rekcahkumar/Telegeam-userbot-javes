@@ -23,7 +23,7 @@ def bruh(name):
     os.system("instantmusic -q -s "+name)
     
 
-@register(pattern="song ?(.*)")
+@register(outgoing=True, pattern="^.song(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -38,7 +38,7 @@ async def _(event):
     l = glob.glob("*.mp3")
     loa = l[0]
     await event.edit("sending song")
-    await borg.send_file(
+    await bot.send_file(
                 event.chat_id,
                 loa,
                 force_document=True,
