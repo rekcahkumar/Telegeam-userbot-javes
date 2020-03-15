@@ -1,3 +1,4 @@
+
 # Random RGB Sticklet by @PhycoNinja13b
 # modified by @UniBorg
 
@@ -45,7 +46,7 @@ async def sticklet(event):
     draw.multiline_text(((512-width)/2,(512-height)/2), sticktext, font=font, fill=(R, G, B))
 
     image_stream = io.BytesIO()
-    image_stream.name = "Javes"
+    image_stream.name = "Javes.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
 
@@ -75,3 +76,7 @@ async def get_font_file(client, channel_id):
     font_file_message = random.choice(font_file_message_s)
     # download and return the file path
     return await client.download_media(font_file_message)
+
+
+
+
