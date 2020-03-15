@@ -33,10 +33,10 @@ async def filter_incoming_handler(handler):
                     await handler.reply(msg_o.message, file=msg_o.media)
                 elif pro and trigger.reply:
                     await handler.reply(trigger.reply)
-await sleep(60)
-        await msg.delete()
     except AttributeError:
         pass
+await sleep(60)
+        await msg.delete()
 
 
 @register(outgoing=True, pattern="^\.filter (\w*)")
