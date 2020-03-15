@@ -27,14 +27,14 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
 
 # =================== CONSTANT ===================
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin!`"
-NO_PERM = "`I don't have sufficient permissions!`"
-NO_SQL = "`Running on Non-SQL mode!`"
+PP_TOO_SMOL = "`javes:The image is too small`"
+PP_ERROR = "`javes:Failure while processing the image`"
+NO_ADMIN = "`Javes:I am not an admin!`"
+NO_PERM = "`javes:I don't have sufficient permissions!`"
+NO_SQL = "`javes:Running on Non-SQL mode!`"
 
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
-CHAT_PP_ERROR = "`Some issue with updating the pic,`" \
+CHAT_PP_CHANGED = "`javes:Chat Picture Changed`"
+CHAT_PP_ERROR = "`javes:Some issue with updating the pic,`" \
                 "`maybe coz I'm not an admin,`" \
                 "`or don't have enough rights.`"
 INVALID_MEDIA = "`Invalid Extension`"
@@ -68,7 +68,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@register(outgoing=True, pattern="^\.setgpic$", groups_only=True)
+@register(outgoing=True, pattern="^\!setgpic$", groups_only=True)
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
     if not gpic.is_group:
@@ -105,7 +105,7 @@ async def set_group_photo(gpic):
             await gpic.edit(PP_ERROR)
 
 
-@register(outgoing=True, pattern="^\.promote(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!promote(?: |$)(.*)", groups_only=True)
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
     # Get targeted chat
@@ -156,7 +156,7 @@ async def promote(promt):
             f"CHAT: {promt.chat.title}(`{promt.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^\.demote(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!demote(?: |$)(.*)", groups_only=True)
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
     # Admin right check
@@ -205,7 +205,7 @@ async def demote(dmod):
             f"CHAT: {dmod.chat.title}(`{dmod.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^\.ban(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!ban(?: |$)(.*)", groups_only=True)
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
     # Here laying the sanity check
@@ -261,7 +261,7 @@ async def ban(bon):
             f"CHAT: {bon.chat.title}(`{bon.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^\.unban(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!unban(?: |$)(.*)", groups_only=True)
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
     # Here laying the sanity check
@@ -298,7 +298,7 @@ async def nothanos(unbon):
         await unbon.edit("`Uh oh my unban logic broke!`")
 
 
-@register(outgoing=True, pattern="^\.mute(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!mute(?: |$)(.*)", groups_only=True)
 async def spider(spdr):
     """
     This function is basically muting peeps
@@ -358,7 +358,7 @@ async def spider(spdr):
             return await spdr.edit("`Uh oh my mute logic broke!`")
 
 
-@register(outgoing=True, pattern="^\.unmute(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!unmute(?: |$)(.*)", groups_only=True)
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
     # Admin or creator check
@@ -446,7 +446,7 @@ async def muter(moot):
                 await moot.client.send_read_acknowledge(moot.chat_id, moot.id)
 
 
-@register(outgoing=True, pattern="^\.ungmute(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!ungmute(?: |$)(.*)", groups_only=True)
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the userbot """
     # Admin or creator check
@@ -489,7 +489,7 @@ async def ungmoot(un_gmute):
                 f"CHAT: {un_gmute.chat.title}(`{un_gmute.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^\.gmute(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!gmute(?: |$)(.*)", groups_only=True)
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
     # Admin or creator check
@@ -533,7 +533,7 @@ async def gspider(gspdr):
                 f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^\.zombies(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!zombies(?: |$)(.*)", groups_only=True)
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
     if not show.is_group:
@@ -603,7 +603,7 @@ async def rm_deletedacc(show):
             \nCHAT: {show.chat.title}(`{show.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^\.admins$", groups_only=True)
+@register(outgoing=True, pattern="^\!admins$", groups_only=True)
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
     info = await show.client.get_entity(show.chat_id)
@@ -637,7 +637,7 @@ async def get_admin(show):
         remove("adminlist.txt")
 
 
-@register(outgoing=True, pattern="^\.bots$", groups_only=True)
+@register(outgoing=True, pattern="^\!bots$", groups_only=True)
 async def get_bots(show):
     """ For .bots command, list all of the bots of the chat. """
     info = await show.client.get_entity(show.chat_id)
@@ -675,7 +675,7 @@ async def get_bots(show):
         remove("botlist.txt")
 
 
-@register(outgoing=True, pattern="^\.pin(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!pin(?: |$)(.*)", groups_only=True)
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
     # Admin or creator check
@@ -720,7 +720,7 @@ async def pin(msg):
             f"LOUD: {not is_silent}")
 
 
-@register(outgoing=True, pattern="^\.kick(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!kick(?: |$)(.*)", groups_only=True)
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
     # Admin or creator check
@@ -762,7 +762,7 @@ async def kick(usr):
             f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n")
 
 
-@register(outgoing=True, pattern="^\.users ?(.*)", groups_only=True)
+@register(outgoing=True, pattern="^\!users ?(.*)", groups_only=True)
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """
     info = await show.client.get_entity(show.chat_id)
@@ -852,32 +852,3 @@ async def get_user_from_id(user, event):
     return user_obj
 
 
-CMD_HELP.update({
-    "admin":
-    ".promote <username/userid> : <custom rank (optional)> (or) reply to a message with .promote <rank (optional)>\
-\nUsage: Provides admin rights to the person in the chat.\
-\n\n.demote <username/userid> (or) reply to a message with .demote\
-\nUsage: Revokes the person's admin permissions in the chat.\
-\n\n.ban <username/userid> : <reason (optional)> (or) reply to a message with .ban <reason (optional)>\
-\nUsage: Bans the person off your chat.\
-\n\n.unban <username/userid> (or) reply to a message with .unban\
-\nUsage: Removes the ban from the person in the chat.\
-\n\n.mute <username/userid> : <reason (optional)> reply to a message with .mute <reason (optional)>\
-\nUsage: Mutes the person in the chat, works on admins too.\
-\n\n.unmute <username/userid> (or) reply to a message with .unmute\
-\nUsage: Removes the person from the muted list.\
-\n\n.gmute <username/userid> : <reason (optional)> (or) reply to a message with .gmute <reason (optional)>\
-\nUsage: Mutes the person in all groups you have in common with them.\
-\n\n.ungmute <username/userid> (or) reply to a message with .ungmute\
-\nUsage: Removes the person from the global mute list.\
-\n\n.delusers\
-\nUsage: Searches for deleted accounts in a group. Use .delusers clean to remove deleted accounts from the group.\
-\n\n.admins\
-\nUsage: Retrieves a list of admins in the chat.\
-\n\n.bots\
-\nUsage: Retrieves a list of bots in the chat.\
-\n\n.users or .users <search query>\
-\nUsage: Retrieves all (or queried) users in the chat.\
-\n\n.setgpic <reply to image>\
-\nUsage: Changes the group's display picture."
-})
