@@ -344,9 +344,9 @@ async def spider(spdr):
 
             # Announce that the function is done
             if reason:
-                await spdr.edit(f"`Safely taped !!`\nReason: {reason}")
+                await spdr.edit(f"`Muted!!`\nReason: {reason}")
             else:
-                await spdr.edit("`Safely taped !!`")
+                await spdr.edit("`Muted !`")
 
             # Announce to logging group
             if BOTLOG:
