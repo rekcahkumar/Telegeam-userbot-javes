@@ -21,7 +21,7 @@ async def filter_incoming_handler(handler):
             except AttributeError:
                 await handler.edit("`Running on Non-SQL mode!`")
                 return
-            name = handler.raw_text
+                name = event.raw_text
             filters = get_filters(handler.chat_id)
             if not filters:
                 return
