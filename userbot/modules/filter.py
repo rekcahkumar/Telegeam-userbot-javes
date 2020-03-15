@@ -26,7 +26,8 @@ async def filter_incoming_handler(handler):
             if not filters:
                 return
             for trigger in filters:
-                pro = pattern, name, flags=re.IGNORECASE)
+pro = fullmatch(name, flags=re.IGNORECASE)
+                
                 if pro and trigger.f_mesg_id:
                     msg_o = await handler.client.get_messages(
                         entity=BOTLOG_CHATID, ids=int(trigger.f_mesg_id))
