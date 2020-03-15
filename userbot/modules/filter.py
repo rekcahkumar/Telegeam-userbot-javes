@@ -21,13 +21,12 @@ async def filter_incoming_handler(handler):
             except AttributeError:
                 await handler.edit("`Running on Non-SQL mode!`")
                 return
-                name = handler.raw_text
+            name = handler.raw_text
             filters = get_filters(handler.chat_id)
             if not filters:
                 return
             for trigger in filters:
-pro = fullmatch(name, flags=re.IGNORECASE)
-                
+                pro = fullmatch(name, flags=IGNORECASE)
                 if pro and trigger.f_mesg_id:
                     msg_o = await handler.client.get_messages(
                         entity=BOTLOG_CHATID, ids=int(trigger.f_mesg_id))
