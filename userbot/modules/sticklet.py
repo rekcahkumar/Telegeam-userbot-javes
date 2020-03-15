@@ -11,7 +11,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 from userbot.events import register
 
 
-@register(outgoing=True, pattern="^.text$")
+@register(outgoing=True, disable_errors=True, pattern="^.type")
 async def sticklet(event):
     R = random.randint(0,256)
     G = random.randint(0,256)
