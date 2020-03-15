@@ -74,9 +74,12 @@ async def add_new_filter(new_handler):
     success = "`Filter` **{}** `{} successfully`"
     if add_filter(str(new_handler.chat_id), keyword, string, msg_id) is True:
         await new_handler.edit(success.format(keyword, 'added'))
+await sleep(1)
+        await msg.delete()
     else:
         await new_handler.edit(success.format(keyword, 'updated'))
-
+await sleep(1)
+        await msg.delete()
 
 @register(outgoing=True, pattern="^\.stop (\w*)")
 async def remove_a_filter(r_handler):
@@ -92,8 +95,8 @@ async def remove_a_filter(r_handler):
     else:
         await r_handler.edit(
             "`Filter` **{}** `was deleted successfully`".format(filt))
-
-
+         await sleep(1)
+        await msg.delete()
 @register(outgoing=True, pattern="^\.rmbotfilters (.*)")
 async def kick_marie_filter(event):
     """ For .rmfilters command, allows you to kick all \
