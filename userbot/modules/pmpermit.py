@@ -17,7 +17,7 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
-    "`Javes: HelloSir,I cant allow you rk's pm wihout his permission please be patint,thankyou`")
+    "`Javes: HelloSir,I cant allow you rk's pm wihout his permission please be patient,thankyou`")
 # =================================================================
 
 
