@@ -8,6 +8,7 @@ Available Commands:
 .clearfilter"""
 import asyncio
 import re
+from userbot.utils import command
 from telethon import events, utils
 from telethon.tl import types
 from userbot.modules.sql_helper.filter_sqll import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
