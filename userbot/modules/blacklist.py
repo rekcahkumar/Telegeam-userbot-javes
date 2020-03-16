@@ -1,9 +1,4 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# port to userbot from uniborg
-# @keselekpermen69
 
 
 import asyncio
@@ -33,7 +28,7 @@ async def on_new_message(event):
         pass
 
 
-@register(outgoing=True, pattern="^.addbl(?: |$)(.*)")
+@register(outgoing=True, pattern="^!addblacklist(?: |$)")
 async def on_add_black_list(addbl):
     text = addbl.pattern_match.group(1)
     to_blacklist = list(set(trigger.strip() for trigger in text.split("\n") if trigger.strip()))
@@ -42,7 +37,7 @@ async def on_add_black_list(addbl):
     await addbl.edit("Added {} triggers to the blacklist in the current chat".format(len(to_blacklist)))
 
 
-@register(outgoing=True, pattern="^.listbl(?: |$)(.*)")
+@register(outgoing=True, pattern="^!blacklists(?: |$)")
 async def on_view_blacklist(listbl):
     all_blacklisted = sql.get_chat_blacklist(listbl.chat_id)
     OUT_STR = "Blacklists in the Current Chat:\n"
@@ -67,7 +62,7 @@ async def on_view_blacklist(listbl):
         await listbl.edit(OUT_STR)
 
 
-@register(outgoing=True, pattern="^.rmbl(?: |$)(.*)")
+@register(outgoing=True, pattern="^!removeblacklist(?: |$)")
 async def on_delete_blacklist(rmbl):
     text = rmbl.pattern_match.group(1)
     to_unblacklist = list(set(trigger.strip() for trigger in text.split("\n") if trigger.strip()))
@@ -77,14 +72,3 @@ async def on_delete_blacklist(rmbl):
             successful += 1
     await rmbl.edit(f"Removed {successful} / {len(to_unblacklist)} from the blacklist")
     
-CMD_HELP.update({
-    "blacklist":
-    ".listbl\
-    \nUsage: Lists all active userbot blacklist in a chat.\
-    \n\n.addbl <keyword>\
-    \nUsage: Saves the message to the 'blacklist keyword'.\
-    \nThe bot will delete to the message whenever 'blacklist keyword' is mentioned.\
-    \n\n.rmbl <keyword>\
-    \nUsage: Stops the specified blacklist.\
-	\n btw you need the Delete Messages(admin)."
-})
