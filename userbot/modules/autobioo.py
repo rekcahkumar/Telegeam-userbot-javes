@@ -17,8 +17,9 @@ async def _(event):
     if event.fwd_from:
         return
     while True:
-         date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-        bio = f"Iam warking for you 24hours.......now time {date}  :p"
+        DMY = time.strftime("%d.%m.%Y")
+        HM = time.strftime("%H:%M:%S")
+        bio = f"📅 {DMY} | Longer Bio: @SpEcHlDe | ⌚️ {HM}"
         logger.info(bio)
         try:
             await borg(functions.account.UpdateProfileRequest(  # pylint:disable=E0602
