@@ -1,10 +1,6 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-""" Userbot module for managing events.
- One of the main components of the userbot. """
+
+""" Javes module for managing events.
+ One of the main components of the javes. """
 
 import sys
 from asyncio import create_subprocess_shell as asyncsubshell
@@ -17,6 +13,108 @@ from telethon import events
 
 from userbot import bot, BOTLOG_CHATID, LOGSPAMMER
 
+def command(**args):
+    stack = inspect.stack()
+    previous_stack_frame = stack[1]
+    file_test = Path(previous_stack_frame.filename)
+    file_test = file_test.stem.replace(".py", "")
+    if 1 == 0:
+        return print("stupidity at its best")
+    else:
+        pattern = args.get("pattern", None)
+        allow_sudo = args.get("allow_sudo", None)
+        allow_edited_updates = args.get('allow_edited_updates', False)
+        args["incoming"] = args.get("incoming", False)
+        args["outgoing"] = True
+        if bool(args["incoming"]):
+            args["outgoing"] = False
+
+        try:
+            if pattern is not None and not pattern.startswith('(?i)'):
+                args['pattern'] = '(?i)' + pattern
+        except:
+            pass
+
+        reg = re.compile('(.*)')
+        if not pattern == None:
+            try:
+                cmd = re.search(reg, pattern)
+                try:
+                    cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                except:
+                    pass
+
+                try:
+                    CMD_LIST[file_test].append(cmd)
+                except:
+                    CMD_LIST.update({file_test: [cmd]})
+            except:
+                pass
+
+        if allow_sudo:
+            args["from_users"] = list(Var.SUDO_USERS)
+            # Mutually exclusive with outgoing (can only set one of either).
+            args["incoming"] = True
+        del allow_sudo
+        try:
+            del args["allow_sudo"]
+        except:
+            pass
+
+        if "allow_edited_updates" in args:
+            del args['allow_edited_updates']
+
+        def decorator(func):
+            if allow_edited_updates:
+                bot.add_event_handler(func, events.MessageEdited(**args))
+            bot.add_event_handler(func, events.NewMessage(**args))
+            try:
+                LOAD_PLUG[file_test].append(func)
+            except:
+                LOAD_PLUG.update({file_test: [func]})
+            return func
+
+        return decorator
+
+
+def load_module(shortname):
+    if shortname.startswith("__"):
+        pass
+    elif shortname.endswith("_"):
+        import userbot.utils
+        import sys
+        import importlib
+        from pathlib import Path
+        path = Path(f"userbot/plugins/{shortname}.py")
+        name = "userbot.plugins.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        print("Successfully (re)imported "+shortname)
+    else:
+        import userbot.utils
+        import sys
+        import importlib
+        from pathlib import Path
+        path = Path(f"userbot/plugins/{shortname}.py")
+        name = "userbot.plugins.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        mod.bot = bot
+        mod.tgbot = bot.tgbot
+        mod.Var = Var
+        mod.command = command
+        mod.logger = logging.getLogger(shortname)
+        # support for uniborg
+        sys.modules["uniborg.util"] = userbot.utils
+        mod.Config = Config
+        mod.borg = bot
+        # support for paperplaneextended
+        sys.modules["userbot.events"] = userbot.utils
+        spec.loader.exec_module(mod)
+        # for imports
+        sys.modules["userbot.plugins."+shortname] = mod
+        print("Successfully (re)imported "+shortname)
 
 def register(**args):
     """ Register a new event. """
@@ -86,7 +184,7 @@ def register(**args):
                     ftext += "\nyou may not report this error if you've"
                     ftext += "\nany confidential data here, no one will see your data\n"
                     ftext += "================================\n\n"
-                    ftext += "--------BEGIN USERBOT TRACEBACK LOG--------\n"
+                    ftext += "--------BEGIN JAVES TRACEBACK LOG--------\n"
                     ftext += "\nDate: " + date
                     ftext += "\nChat ID: " + str(check.chat_id)
                     ftext += "\nSender ID: " + str(check.sender_id)
@@ -96,7 +194,7 @@ def register(**args):
                     ftext += str(format_exc())
                     ftext += "\n\nError text:\n"
                     ftext += str(sys.exc_info()[1])
-                    ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                    ftext += "\n\n--------END JAVES TRACEBACK LOG--------"
 
                     command = "git log --pretty=format:\"%an: %s\" -10"
 
@@ -116,9 +214,7 @@ def register(**args):
                     file.close()
 
                     if LOGSPAMMER:
-                        await check.respond("`Javes: Error 404.\
-                        \nI send this in log chat.`"
-                                            )
+                        await check.respond("`Javes: Error 404 check log chat!)
 
                     await check.client.send_file(send_to,
                                                  "error.log",
