@@ -1,6 +1,6 @@
 from telethon import events
 from datetime import datetime
-
+from userbot.events import command
 
 @command(pattern="^.rk")
 async def _(event):
