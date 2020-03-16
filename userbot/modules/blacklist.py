@@ -1,6 +1,5 @@
 
 
-
 import asyncio
 import io
 import re
@@ -28,7 +27,7 @@ async def on_new_message(event):
         pass
 
 
-@register(outgoing=True, pattern="^!addblacklist(?: |$)")
+@register(outgoing=True, pattern="^!addbl(?: |$)(.*)")
 async def on_add_black_list(addbl):
     text = addbl.pattern_match.group(1)
     to_blacklist = list(set(trigger.strip() for trigger in text.split("\n") if trigger.strip()))
@@ -37,7 +36,7 @@ async def on_add_black_list(addbl):
     await addbl.edit("Added {} triggers to the blacklist in the current chat".format(len(to_blacklist)))
 
 
-@register(outgoing=True, pattern="^!blacklists(?: |$)")
+@register(outgoing=True, pattern="^!listbl(?: |$)(.*)")
 async def on_view_blacklist(listbl):
     all_blacklisted = sql.get_chat_blacklist(listbl.chat_id)
     OUT_STR = "Blacklists in the Current Chat:\n"
@@ -45,7 +44,7 @@ async def on_view_blacklist(listbl):
         for trigger in all_blacklisted:
             OUT_STR += f"`{trigger}`\n"
     else:
-        OUT_STR = "No BlackLists. Start Saving using `.addbl`"
+        OUT_STR = "No BlackLists. Start Saving using `!addbl`"
     if len(OUT_STR) > 4096:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "blacklist.text"
@@ -62,7 +61,7 @@ async def on_view_blacklist(listbl):
         await listbl.edit(OUT_STR)
 
 
-@register(outgoing=True, pattern="^!removeblacklist(?: |$)")
+@register(outgoing=True, pattern="^!rmbl(?: |$)(.*)")
 async def on_delete_blacklist(rmbl):
     text = rmbl.pattern_match.group(1)
     to_unblacklist = list(set(trigger.strip() for trigger in text.split("\n") if trigger.strip()))
