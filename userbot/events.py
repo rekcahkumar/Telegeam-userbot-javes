@@ -3,6 +3,7 @@
  One of the main components of the javes. """
 
 import sys
+from pathlib import Path
 from asyncio import create_subprocess_shell as asyncsubshell
 from asyncio import subprocess as asyncsub
 from os import remove
