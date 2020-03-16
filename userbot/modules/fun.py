@@ -18,7 +18,9 @@ from cowpy import cow
 from userbot import CMD_HELP
 from userbot.events import register
 from userbot.modules.admin import get_user_from_event
-
+from telethon import events
+import asyncio
+from collections import deque
 # ================= CONSTANT =================
 METOOSTR = [
     "Me too thanks",
@@ -739,14 +741,6 @@ async def slap(replied_user, event):
     return caption
 
 
-@register(outgoing=True, pattern="^-_-$", ignore_unsafe=True)
-async def lol(lel):
-    """ Ok... """
-    okay = "-_-"
-    for i in range(10):
-        okay = okay[:-1] + "_-"
-        await lel.edit(okay)
-
 
 @register(outgoing=True, pattern="^.(yes|no|maybe|decide)$")
 async def decide(event):
@@ -763,7 +757,34 @@ async def decide(event):
                                     file=r["image"])
 
 
-@register(outgoing=True, pattern="^;_;$", ignore_unsafe=True)
+@register(outgoing=True, pattern="^:/$")
+async def kek(keks):
+    """ Check yourself ;)"""
+    uio = ["/", "\\"]
+    for i in range(1, 15):
+        time.sleep(0.3)
+        await keks.edit(":" + uio[i % 2])
+
+@register(outgoing=True, pattern="^-_-$")
+async def lol(lel):
+    """ Ok... """
+    okay = "-_-"
+    for i in range(10):
+        okay = okay[:-1] + "_-"
+        await lel.edit(okay)
+
+@register(outgoing=True, disable_errors=True, pattern="^.load")
+async def _(event):
+	if event.fwd_from:
+		return 
+	deq = deque(list("Loaging....."))
+	for _ in range(1000):
+		await asyncio.sleep(0.1)
+		await event.edit("".join(deq))
+		deq.rotate(1)
+    
+
+@register(outgoing=True, pattern="^;_;$")
 async def fun(e):
     t = ";_;"
     for j in range(10):
