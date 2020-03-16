@@ -6,23 +6,23 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.events import register
 from userbot import bot, CMD_HELP
 
-@register(outgoing=True, pattern="^.scan(?: |$)(.*)")
+@register(outgoing=True, disable_errors=True, pattern="^!scan(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("```Reply to any user message.```")
+       await event.edit("```javes: Can't scan bot meaage```")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit("```reply to a media message```")
+       await event.edit("```javes: reply to a media message```")
        return
     chat = "@DrWebBot"
     sender = reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("```Reply to actual users message.```")
+       await event.edit("```javes: Reply to actual users message.```")
        return
-    await event.edit(" `Sliding my tip, of fingers over it`")
+    await event.edit(" `javes: Scanning......`")
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=161163358))
@@ -32,9 +32,9 @@ async def _(event):
               await event.reply("```Please unblock @sangmatainfo_bot and try again```")
               return
           if response.text.startswith("Forward"):
-             await event.edit("```can you kindly disable your forward privacy settings for good?```")
+             await event.edit("```javes: This user have forward privacy```")
           else:
           	if response.text.startswith("Select"):
-          		await event.edit("`Please go to` @DrWebBot `and select your language.`") 
+          		await event.edit("`javes: Please go to` @DrWebBot `and select your language.`") 
           	else: 
-          			await event.edit(f"**Antivirus scan was completed. I got dem final results.**\n {response.message.message}")
+          			await event.edit(f"javes: Antivirus scan was completed. \n {response.message.message}")
