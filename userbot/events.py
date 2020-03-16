@@ -214,7 +214,7 @@ def register(**args):
                     file.close()
 
                     if LOGSPAMMER:
-                        await check.respond("`Javes: Error 404 check log chat!)
+                        await check.respond("`Javes: Error 404, please check log chat`")
 
                     await check.client.send_file(send_to,
                                                  "error.log",
