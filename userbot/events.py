@@ -19,7 +19,7 @@ from userbot import bot, BOTLOG_CHATID, LOGSPAMMER
 
 
 
-def javes(**args):
+def rekcah05(**args):
     """ Register a new event. """
     pattern = args.get('pattern', None)
     disable_edited = args.get('disable_edited', False)
