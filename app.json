@@ -88,9 +88,8 @@
     
     
     
-    
-    
-    "DEFAULT_BIO": {
+   },
+      "DEFAULT_BIO": {
       "description": "Default profile bio.",
       "value": "I'm using javes!",
       "required": false
