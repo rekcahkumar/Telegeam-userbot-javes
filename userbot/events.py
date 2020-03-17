@@ -118,7 +118,8 @@ def javes(**args):
 
                     if LOGSPAMMER:
                         await check.respond("`Javes: Error 404, please check log chat`")
-
+                   await sleep(1)
+                   await msg.delete()
                     await check.client.send_file(send_to,
                                                  "error.log",
                                                  caption=text)
