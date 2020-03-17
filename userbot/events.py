@@ -3,14 +3,7 @@
  One of the main components of the javes. """
 
 import sys
-from random import choice, randint
-from asyncio import sleep
 
-from telethon.events import StopPropagation
-
-from userbot import (AFKREASON, COUNT_MSG, CMD_HELP, ISAFK, BOTLOG,
-                     BOTLOG_CHATID, USERS, PM_AUTO_BAN)
-from userbot.events import register
 import re
 
 from asyncio import create_subprocess_shell as asyncsubshell
@@ -125,8 +118,7 @@ def javes(**args):
 
                     if LOGSPAMMER:
                         await check.respond("`Javes: Error 404, please check log chat`")
-                   await sleep(1)
-                   await msg.delete()
+                   
                     await check.client.send_file(send_to,
                                                  "error.log",
                                                  caption=text)
