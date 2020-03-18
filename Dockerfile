@@ -60,7 +60,7 @@ RUN python3 -m ensurepip \
 #
 # Clone repo and prepare working directory
 #
-RUN git clone https://github.com/rekcah-pavi/Telegeam-userbot-javes /root/userbot
+RUN https://github.com/rekcahkumar/Telegeam-userbot-javes /root/userbot
 RUN mkdir /root/userbot/bin/
 WORKDIR /root/userbot/
 
