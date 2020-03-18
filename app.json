@@ -1,11 +1,3 @@
-Skip to content
- keselekpermen69 / UserButt
-Code Issues 0 Pull requests 0 Projects 0 Actions Wiki Security Pulse Community
-UserButt/app.json
-@keselekpermen69 keselekpermen69 lyrics: add module requirements
-98dc0a1 9 days ago
-185 lines (185 sloc)  6.25 KB
- 
 {
   "name": "Telegram UserButt",
   "description": "[UserButt] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database.",
@@ -17,17 +9,17 @@ UserButt/app.json
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/rekcah-pavi/Telegeam-userbot-javes",
-  "website": "https://t.me/rekcah05",
-  "success_url": "https://t.me/rekcah05",
+  "repository": "https://github.com/keselekpermen69/userbutt",
+  "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
+  "success_url": "https://t.me/userbotindo",
   "stack": "container",
   "env": {
-    "TELEGRAM_API_KEY": {
-      "description": "Go to my.telegram.org and get it.",
+    "API_KEY": {
+      "description": "Get this value from my.telegram.org.",
       "required": true
     },
-    "TELEGRAM_API_KEY": {
-      "description": "Go to my.telegram.org and get it.",
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org.",
       "required": true
     },
     "STRING_SESSION": {
@@ -49,12 +41,12 @@ UserButt/app.json
       "required": true
 	},  
     "HEROKU_API_KEY": {
-      "description": "It need to javes updates., get it from 'https://dashboard.heroku.com/account'",
-         "value": "",
+      "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
+      "value": ""
     },
     "HEROKU_APP_NAME": {
-      "description": "type this app name agin, It need to javes updates.",
-      "required": True
+      "description": "Add the Heroku app name here. It helps with userbot updates.",
+      "required": false
     },
     "UPSTREAM_REPO_URL": {
       "description": "In case you maintain a fork, add your repo URL here.",
@@ -96,7 +88,7 @@ UserButt/app.json
       "description": "If you need verbosity on the console logging",
       "value": "False"
     },
-    "PM_PROTECTOR": {
+    "PM_AUTO_BAN": {
       "description": "PM Auto-Ban Feature Switch. Also known as the 'bleep blop, this is a bot...' module.",
       "value": "False"
     },
@@ -191,15 +183,3 @@ UserButt/app.json
     }
   ]
 }
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
