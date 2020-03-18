@@ -15,6 +15,7 @@ gTTS
 gTTS-token
 hachoir
 heroku
+asyncurban
 heroku3
 httplib2
 humanize
