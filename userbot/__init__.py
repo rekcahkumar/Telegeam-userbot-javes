@@ -33,8 +33,8 @@ else:
                 level=INFO)
 LOGS = getLogger(__name__)
 
-if version_info[0] < 3 or version_info[1] < 6:
-    LOGS.info("You MUST have a python version of at least 3.6."
+if version_info[0] < 3 or version_info[1] < 8:
+    LOGS.info("You MUST have a python version of at least 3.8."
               "Multiple features depend on this. Bot quitting.")
     quit(1)
 
@@ -50,8 +50,9 @@ if CONFIG_CHECK:
     quit(1)
 
 # Telegram App KEY and HASH
-API_KEY = os.environ.get("API_KEY", None)
-API_HASH = os.environ.get("API_HASH", None)
+API_KEY = os.environ.get("TELEGRAM_API_KEY", None)
+API_HASH = os.environ.get("TELEGRAM_API_HASH", None)
+
 
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
@@ -64,7 +65,7 @@ BOTLOG = sb(os.environ.get("BOTLOG", "False"))
 LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
+PM_AUTO_BAN = sb(os.environ.get("PM_PROTECTOR", "False"))
 
 # Heroku Credentials for updater.
 HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
@@ -74,7 +75,7 @@ HEROKU_APIKEY = os.environ.get("HEROKU_APIKEY", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/rekcah-pavi/Telegeam-userbot-javes.git")
+    "https://github.com/userbotindo/userbutt.git")
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -96,6 +97,9 @@ GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
 OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", None)
 
+# Lydia API
+LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
+
 # Anti Spambot Config
 ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
 ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
@@ -103,8 +107,11 @@ ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 # Youtube API key
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
+# Telegraph 
+TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", None)
+
 # Default .alive name
-ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
+ALIVE_NAME = os.environ.get("SHORT_NAME", None)
 
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY", ""))
@@ -137,170 +144,14 @@ G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
 GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY",
                                          "./downloads")
-# Lydia API
-LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
-
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
 if not os.path.exists('bin'):
     os.mkdir('bin')
 
-
-
-
-
-
-
-
-ZALG_LIST = [[
-    "̖",
-    " ̗",
-    " ̘",
-    " ̙",
-    " ̜",
-    " ̝",
-    " ̞",
-    " ̟",
-    " ̠",
-    " ̤",
-    " ̥",
-    " ̦",
-    " ̩",
-    " ̪",
-    " ̫",
-    " ̬",
-    " ̭",
-    " ̮",
-    " ̯",
-    " ̰",
-    " ̱",
-    " ̲",
-    " ̳",
-    " ̹",
-    " ̺",
-    " ̻",
-    " ̼",
-    " ͅ",
-    " ͇",
-    " ͈",
-    " ͉",
-    " ͍",
-    " ͎",
-    " ͓",
-    " ͔",
-    " ͕",
-    " ͖",
-    " ͙",
-    " ͚",
-    " ",
-],
-             [
-                 " ̍",
-                 " ̎",
-                 " ̄",
-                 " ̅",
-                 " ̿",
-                 " ̑",
-                 " ̆",
-                 " ̐",
-                 " ͒",
-                 " ͗",
-                 " ͑",
-                 " ̇",
-                 " ̈",
-                 " ̊",
-                 " ͂",
-                 " ̓",
-                 " ̈́",
-                 " ͊",
-                 " ͋",
-                 " ͌",
-                 " ̃",
-                 " ̂",
-                 " ̌",
-                 " ͐",
-                 " ́",
-                 " ̋",
-                 " ̏",
-                 " ̽",
-                 " ̉",
-                 " ͣ",
-                 " ͤ",
-                 " ͥ",
-                 " ͦ",
-                 " ͧ",
-                 " ͨ",
-                 " ͩ",
-                 " ͪ",
-                 " ͫ",
-                 " ͬ",
-                 " ͭ",
-                 " ͮ",
-                 " ͯ",
-                 " ̾",
-                 " ͛",
-                 " ͆",
-                 " ̚",
-             ],
-             [
-                 " ̕",
-                 " ̛",
-                 " ̀",
-                 " ́",
-                 " ͘",
-                 " ̡",
-                 " ̢",
-                 " ̧",
-                 " ̨",
-                 " ̴",
-                 " ̵",
-                 " ̶",
-                 " ͜",
-                 " ͝",
-                 " ͞",
-                 " ͟",
-                 " ͠",
-                 " ͢",
-                 " ̸",
-                 " ̷",
-                 " ͡",
-             ]]
-
-EMOJIS = [
-    "😂",
-    "😂",
-    "👌",
-    "✌",
-    "💞",
-    "👍",
-    "👌",
-    "💯",
-    "🎶",
-    "👀",
-    "😂",
-    "👓",
-    "👏",
-    "👐",
-    "🍕",
-    "💥",
-    "🍴",
-    "💦",
-    "💦",
-    "🍑",
-    "🍆",
-    "😩",
-    "😏",
-    "👉👌",
-    "👀",
-    "👅",
-    "😩",
-    "🚰",
-]
-
-
 binaries = {
-    "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown":
+    "https://raw.githubusercontent.com/adekmaulana/megadown/master/megadown":
     "bin/megadown",
     "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py":
     "bin/cmrudl"
@@ -314,20 +165,10 @@ for binary, path in binaries.items():
 # 'bot' variable
 if STRING_SESSION:
     # pylint: disable=invalid-name
-    bot = TelegramClient(StringSession(STRING_SESSION),
-                         API_KEY,
-                         API_HASH,
-                         connection_retries=None,
-                         auto_reconnect=False,
-                         lang_code='en')
+    bot = TelegramClient(StringSession(STRING_SESSION), API_KEY, API_HASH)
 else:
     # pylint: disable=invalid-name
-    bot = TelegramClient("userbot",
-                         API_KEY,
-                         API_HASH,
-                         connection_retries=None,
-                         auto_reconnect=False,
-                         lang_code='en')
+    bot = TelegramClient("userbot", API_KEY, API_HASH)
 
 
 async def check_botlog_chatid():
@@ -347,12 +188,11 @@ async def check_botlog_chatid():
         return
 
     entity = await bot.get_entity(BOTLOG_CHATID)
-    if not entity.creator:
-        if entity.default_banned_rights.send_messages:
-            LOGS.info(
-                "Your account doesn't have rights to send messages to BOTLOG_CHATID "
-                "group. Check if you typed the Chat ID correctly.")
-            quit(1)
+    if entity.default_banned_rights.send_messages:
+        LOGS.info(
+            "Your account doesn't have rights to send messages to BOTLOG_CHATID "
+            "group. Check if you typed the Chat ID correctly.")
+        quit(1)
 
 
 with bot:
