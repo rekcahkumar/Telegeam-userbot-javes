@@ -50,7 +50,7 @@ UserButt/app.json
 	},  
     "HEROKU_API_KEY": {
       "description": "It need to javes updates., get it from 'https://dashboard.heroku.com/account'",
-      "required": True
+         "value": "",
     },
     "HEROKU_APP_NAME": {
       "description": "type this app name agin, It need to javes updates.",
@@ -191,7 +191,7 @@ UserButt/app.json
     }
   ]
 }
-© 2020 GitHub, Inc.
+Â© 2020 GitHub, Inc.
 Terms
 Privacy
 Security
