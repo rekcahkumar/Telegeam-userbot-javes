@@ -10,6 +10,7 @@
     "productivity"
   ],
   "repository": "https://github.com/rekcah-pavi/Telegeam-userbot-javes",
+    "website": "https://t.me/rekcah05",
   "success_url": "https://t.me/rekcah05",
   "stack": "container",
   "env": {
@@ -37,7 +38,7 @@
 	},  
     "HEROKU_API_KEY": {
       "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account,Important for update'",
-      "value": ""
+      "value": "",
       "required": true
     },
     "HEROKU_APP_NAME": {
